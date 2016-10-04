@@ -1,0 +1,65 @@
+CREATE TABLE Directors 
+(
+Id INT PRIMARY KEY IDENTITY,
+DirectorName VARCHAR(60) NOT NULL,
+Notes VARCHAR(max) NULL
+)
+
+CREATE TABLE Genres 
+(
+Id INT PRIMARY KEY IDENTITY,
+GenreName VARCHAR (60) NOT NULL,
+Notes VARCHAR (200) NULL
+)
+
+CREATE TABLE Categories 
+(
+Id INT PRIMARY KEY IDENTITY,
+CategoryName VARCHAR(60) NOT NULL,
+Notes VARCHAR (200) NULL
+)
+
+CREATE TABLE Movies
+(
+Id INT PRIMARY KEY IDENTITY,
+Title VARCHAR (60) NOT NULL,
+DirectorId INT NOT NULL FOREIGN KEY REFERENCES Directors(Id),
+CopyrightYear DATE NULL, 
+[Length] INT NOT NULL, 
+GenreId INT NOT NULL FOREIGN KEY REFERENCES Genres(Id),
+CategoryId INT NOT NULL FOREIGN KEY REFERENCES Categories(Id), 
+Rating FLOAT NULL,
+Notes VARCHAR (max)
+)
+
+INSERT INTO Directors (DirectorName, Notes)
+VALUES
+('Under Cover', 'Good'),
+('The Mechanik', 'Good'),
+('Naive', 'Good'),
+('Otkradnat Jivot', 'Good'),
+('Maimuni', 'Good')
+
+INSERT INTO Genres (GenreName)
+VALUES
+('Crime'),
+('Comedy'),
+('Thriller'),
+('Drama'),
+('Comedy')
+
+INSERT INTO Categories(CategoryName)
+VALUES
+('Hello,'),
+('it,s me'),
+('I was wondering if after all these years you,d like to meet'),
+('To go over everything'),
+('They say that time,s supposed to heal ya')
+
+INSERT INTO Movies (Title, DirectorId, [Length], GenreId, CategoryId, Rating)
+VALUES
+('Hello', 1, 150, 4, 1, 10.0),
+('Adele', 3, 120, 2, 1, 9.5),
+('Under Cover ', 2, 130, 1, 2, 9.7),
+('Love, love', 5, 110, 1, 2, 9.9),
+('Three tomatoo', 4, 170, 1, 2, 8.5)

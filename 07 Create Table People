@@ -1,0 +1,25 @@
+CREATE TABLE People
+(
+-- [Id] - unique number for every person there will be no more than 231-1 people. (Auto incremented). Pri Key.
+Id INT IDENTITY(1,1) PRIMARY KEY CHECK (Id < 2147483648),
+-- [Name] - no more than 200 Unicode characters
+[Name] VARCHAR (200) NOT NULL,
+--  [Picture] - image with size up to 2 MB. (Allow nulls)
+Picture BINARY (2) NULL,
+--  [Height] - In meters. Real number precise up to 2 digits after floating point. (Allow nulls)
+HeightFLOAT(2) NULL,
+Weight FLOAT(2) NULL,
+-- [Gender] – Possible states are m or f. (Not null)
+Gender NVARCHAR(1) NOT NULL,
+Birthdate DATE NOT NULL,
+-- [Biography] – detailed biography of the person it can contain max allowed Unicode characters. (Allow nulls)
+Biography NVARCHAR (max) NULL
+)
+
+INSERT INTO People(Name, Picture, Height, [Weight], Gender, Birthdate, Biography) 
+VALUES 
+('Pepi', NULL, 1.22, 18.00, 'f', '2010-03-16', 't'),
+('Ici', NULL, 1.00, 12.00, 'm', '2014-11-12', 'this is the bio'),
+('Aneto', NULL, 0.78, 8.80, 'f', '2016-01-23', 'this is the bio'),
+('Sofito', NULL, 1.60, 55.6, 'f', '1987-12-01', 'this is the bio'),
+('Belcheto', NULL, 1.00, 18.12, 'f', '1983-07-28', 'this is the bio');

@@ -1,2 +1,0 @@
-ALTER TABLE Users
-ADD CONSTRAINT [LastLoginTime] DEFAULT GETDATE() FOR [LastLoginTime]
